@@ -1,0 +1,11 @@
+@layout('admin/layout/master')
+@set('title', 'gestion des articles')
+
+@section('main')
+  <h1>Hello Articles!</h1>
+  <a href="/admin/posts/create">créer un article</a>
+  @each(post in posts)
+    {{ post.title }}
+    <img src="{{ post.thumbnail }}" alt="{{ post.title }}">
+  @end
+@endsection

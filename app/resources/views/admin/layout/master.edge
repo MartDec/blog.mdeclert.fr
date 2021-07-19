@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>blog.mdeclert admin - {{ title }}</title>
+  <link rel="stylesheet" href="/style/admin/layout.css">
+  <link rel="stylesheet" href="/style/admin/header.css">
+  <link rel="stylesheet" href="/style/admin/nav.css">
+  @!section('style')
+</head>
+<body>
+  <header>
+    @include('admin/partials/header')
+  </header>
+  <div class="content">
+    <nav>
+      @include('admin/partials/nav')
+    </nav>
+    <main>
+      @!section('main')
+    </main>
+  </div>
+  @!section('script')
+</body>
+</html>

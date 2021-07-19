@@ -1,0 +1,7 @@
+.dist/
+.vscode/
+.idea/
+var/
+
+.env
+diagram.io.txt

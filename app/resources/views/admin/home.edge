@@ -1,0 +1,6 @@
+@layout('admin/layout/master')
+@set('title', 'welcome')
+
+@section('main')
+  <h1>Hello {{ currentUserName(session) }}</h1>
+@endsection

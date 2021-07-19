@@ -1,0 +1,31 @@
+@layout('client/layout/master')
+@set('title', 'connexion / inscription')
+
+@section('style')
+  <link rel="stylesheet" href="/style/login.css">
+@endsection
+
+@section('main')
+  @if (flashMessages.has('errors'))
+    <div class="flash flash-error">
+      @each ((message, input) in flashMessages.get('errors'))
+        @if (input !== 'not-found')
+          <p>Le champs {{ input }} est invalide</p>
+        @else
+          <p>{{ message }}</p>
+        @endif
+      @end
+    </div>
+  @endif
+  <div class="forms-wrapper">
+    <div class="login-form">
+      <h3>Se connecter</h3>
+      @include('client/partials/login-form')
+    </div>
+    <span class="separator"></span>
+    <div class="register-form">
+      <h3>S'inscrire</h3>
+      @include('client/partials/register-form')
+    </div>
+  </div>
+@endsection

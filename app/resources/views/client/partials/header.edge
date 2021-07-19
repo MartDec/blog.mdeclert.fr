@@ -1,0 +1,12 @@
+<h2>
+  <a href="/"><span>blog</span>.mdeclert</a>
+</h2>
+<nav>
+  <a href="/">home</a>
+  <a href="/posts">posts</a>
+  @if(session.has('user.id'))
+    <a href="/me">profile</a>
+  @else
+    <a href="/login">connexion</a>
+  @endif
+</nav>

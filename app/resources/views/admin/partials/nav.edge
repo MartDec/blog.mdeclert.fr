@@ -1,0 +1,6 @@
+@set('currentUrl', state.request.request.url)
+
+<a href="/admin" class="{{ currentUrl === '/admin' ? 'selected' : null }}">Home</a>
+<a href="/admin/posts" class="{{ currentUrl.includes('/admin/posts') ? 'selected' : null }}">Articles</a>
+<a href="/admin/users" class="{{ currentUrl.includes('/admin/users') ? 'selected' : null }}">Utilisateurs</a>
+<a href="/admin/profile" class="{{ currentUrl.includes('/admin/profile') ? 'selected' : null }}">Profile</a>

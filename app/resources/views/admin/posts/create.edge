@@ -1,0 +1,29 @@
+@layout('admin/layout/master')
+@set('title', 'créer un article')
+
+@section('style')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+@endsection
+
+@section('main')
+  <h1>Créer un article</h1>
+  @each (message in flashMessages.get('errors'))
+    <p>{{ message }}</p>
+  @end
+  <form action="{{ route('PostController.create') }}" method="POST" enctype="multipart/form-data">
+    {{ csrfField() }}
+    <input type="text" name="title" placeholder="title">
+    <thumbnail-input></thumbnail-input>
+    <textarea name="content" id="content" placeholder="Contenu de l'article"></textarea>
+    <input type="submit" value="créer">
+  </form>
+  <div id="final-content"></div>
+@endsection
+
+@section('script')
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script src="/js/admin/create-post.js" type="module"></script>
+<script src="/js/admin/components/thumbnail-input.js"></script>
+<!-- <script src="/js/admin/file-input.js" type="module"></script> -->
+@endsection

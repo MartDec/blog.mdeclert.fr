@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=KoHo&display=swap');
+
+:root {
+  --grey: #676767;
+  --lightGrey: #E5E5E5;
+  --red: #ae0000;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'KoHo', sans-serif;
+  color: black;
+}
+
+html {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body main {
+  flex: 1;
+  position: relative;
+}
+
+h1, h1 *,
+h2, h2 *,
+h3, h3 * {
+  font-family: 'Hammersmith One', serif;
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+  color: var(--grey);
+}
+
+.flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.flash.flash-error * {
+  color: var(--red);
+}

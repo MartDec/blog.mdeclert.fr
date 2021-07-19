@@ -1,0 +1,61 @@
+version: "3.8"
+
+services:
+
+  app:
+    env_file: .env
+    image: blog_app
+    ports:
+      - 9001:9000
+    expose:
+      - 9000
+      - 3306
+    container_name: blog_app
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    tty: true
+    working_dir: /home/${USER}/blog
+    volumes:
+      - ./app:/home/${USER}/blog
+    depends_on:
+      - db
+    links:
+      - db
+
+  db:
+    env_file: .env
+    image: mysql:5.7
+    container_name: blog_db
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USER}
+      SERVICES_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./var/database:/docker-entrypoint-initdb.d
+
+  server:
+    env_file: .env
+    image: nginx:1.13-alpine
+    container_name: blog_server
+    restart: unless-stopped
+    depends_on:
+      - app
+    volumes:
+      - ./app:/var/www/html
+      - ./config/nginx:/etc/nginx/conf.d
+      - ./var/logs/nginx:/var/log/nginx
+    ports:
+      - ${APP_PORT}:80
+    tty: true
+    working_dir: /var/www/html

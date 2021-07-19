@@ -1,0 +1,12 @@
+header {
+  width: 100%;
+  background: var(--deepBlue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+header * {
+  color: white;
+}

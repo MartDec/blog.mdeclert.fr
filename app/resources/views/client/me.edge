@@ -1,0 +1,18 @@
+@layout('client/layout/master')
+@set('title', 'profile de ' + username)
+
+@section('style')
+  <link rel="stylesheet" href="/style/profile.css">
+@endsection
+
+@section('main')
+  <div class="content-header">
+    <h1>Bonjour {{ currentUserName(session) }}</h1>
+    <div class="actions">
+      @if (currentUserIsAdmin(session))
+        <a href="/admin">admin</a>
+      @endif
+      <a href="{{ route('SessionController.logout') }}">déconnexion</a>
+    </div>
+  </div>
+@endsection

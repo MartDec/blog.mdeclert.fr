@@ -1,0 +1,12 @@
+<form action="{{ route('SessionController.login') }}" method="POST">
+  {{ csrfField() }}
+  <div class="input">
+    <label for="email">Adresse email</label>
+    <input type="email" name="email" id="email" placeholder="example@mail.com">
+  </div>
+  <div class="input">
+    <label for="password">Mot de passe</label>
+    <input type="password" name="password" id="password" placeholder="secret">
+  </div>
+  <input type="submit" value="se connecter">
+</form>

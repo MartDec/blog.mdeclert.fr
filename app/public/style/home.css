@@ -1,0 +1,25 @@
+main {
+  margin-top: 2rem;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 435px;
+}
+
+.title img {
+  position: absolute;
+  right: 50%;
+  z-index: -1;
+}
+
+.title h1 {
+  font-family: 'KoHo';
+}
+
+.title h1 .bold {
+  font-family: 'Hammersmith One';
+}
