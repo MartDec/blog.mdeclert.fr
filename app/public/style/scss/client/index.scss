@@ -52,3 +52,6 @@ a {
 .flash.flash-error * {
   color: var(--red);
 }
+
+@import 'partials/header';
+@import 'partials/footer';

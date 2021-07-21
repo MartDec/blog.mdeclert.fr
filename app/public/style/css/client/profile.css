@@ -7,7 +7,8 @@ main {
   justify-content: space-between;
   align-items: center;
 }
-
 .content-header .actions a:not(:last-child) {
   margin-right: 2rem;
 }
+
+/*# sourceMappingURL=profile.css.map */

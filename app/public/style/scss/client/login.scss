@@ -1,0 +1,51 @@
+.forms-wrapper {
+  margin-top: 4.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+
+  &>div {
+    width: 50%;
+  }
+
+  .separator {
+    background: var(--lightGrey);
+    width: 1px;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  .login-form {
+    padding-right: 2rem;
+  }
+
+  .register-form {
+    padding-left: 2rem;
+  }
+
+  form {
+    padding: 1rem 0;
+
+    .input {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+    }
+
+    input, label {
+      font-size: 1.2rem;
+    }
+
+    input {
+      border-radius: 0;
+      border: solid 1px black;
+      padding: .2rem .4rem;
+
+      &[type=submit] {
+        cursor: pointer;
+      }
+    }
+  }
+}

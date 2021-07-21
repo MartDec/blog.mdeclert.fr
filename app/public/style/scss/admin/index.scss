@@ -31,9 +31,12 @@ h3, h3 * {
 .content {
   display: flex;
   flex: 1;
+
+  main {
+    flex: 1;
+    padding: 1rem;
+  }
 }
 
-.content main {
-  flex: 1;
-  padding: 1rem;
-}
+@import 'partials/header';
+@import 'partials/nav';

@@ -4,49 +4,40 @@
   display: flex;
   justify-content: space-around;
 }
-
+.forms-wrapper > div {
+  width: 50%;
+}
 .forms-wrapper .separator {
   background: var(--lightGrey);
   width: 1px;
 }
-
-.forms-wrapper > div {
-  width: 50%;
-}
-
 .forms-wrapper h3 {
   font-size: 2rem;
 }
-
 .forms-wrapper .login-form {
   padding-right: 2rem;
 }
-
 .forms-wrapper .register-form {
   padding-left: 2rem;
 }
-
 .forms-wrapper form {
   padding: 1rem 0;
 }
-
 .forms-wrapper form .input {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
-
-.forms-wrapper form label,
-.forms-wrapper form input {
+.forms-wrapper form input, .forms-wrapper form label {
   font-size: 1.2rem;
 }
-
 .forms-wrapper form input {
   border-radius: 0;
   border: solid 1px black;
-  padding: .2rem .4rem;
+  padding: 0.2rem 0.4rem;
 }
-
 .forms-wrapper form input[type=submit] {
   cursor: pointer;
 }
+
+/*# sourceMappingURL=login.css.map */
