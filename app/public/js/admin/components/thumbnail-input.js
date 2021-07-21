@@ -1,11 +1,10 @@
 class ThumbnailInput extends HTMLElement {
   constructor() {
     super()
-    this.attachShadow({mode: "open"})
     this.previewElement = this.createPreview()
     this.inputElement = this.createInput()
     this.wrapper = this.createWrapper()
-    this.shadowRoot.append(this.createStyle(), this.wrapper)
+    this.append(this.createStyle(), this.wrapper)
   }
 
   connectedCallback() {
@@ -17,6 +16,7 @@ class ThumbnailInput extends HTMLElement {
 
   createWrapper() {
     const element = document.createElement("div")
+    element.setAttribute("id", "thumbnail-input-wrapper")
     element.appendChild(this.previewElement)
     element.appendChild(this.inputElement)
 
@@ -44,14 +44,14 @@ class ThumbnailInput extends HTMLElement {
   createStyle() {
     const styleElement = document.createElement("style")
     styleElement.textContent = `
-    div {
+    div#thumbnail-input-wrapper {
       display: flex;
       align-items: center;
       margin-top: .5rem;
       margin-bottom: .5rem;
     }
 
-    img {
+    div#thumbnail-input-wrapper img {
       height: 60px;
       min-width: 60px;
       object-fit: cover;
@@ -64,4 +64,4 @@ class ThumbnailInput extends HTMLElement {
   }
 }
 
-customElements.define("thumbnail-input", ThumbnailInput)
+export default ThumbnailInput

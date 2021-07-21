@@ -3,7 +3,6 @@
 
 @section('style')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-<link rel="stylesheet" href="/style/admin/post-form.css">
 @endsection
 
 @section('main')
@@ -11,10 +10,7 @@
 <form action="{{ route('PostController.update', [post.id]) }}" method="POST">
   {{ csrfField() }}
   <input type="text" name="title" value="{{ post.title }}" placeholder="title">
-  <div class="file-input">
-    <img src="{{ post.thumbnail }}" alt="">
-    <input type="file" name="thumbnail" placeholder="Image de l'article">
-  </div>
+  <thumbnail-input img="{{ post.thumbnail }}"></thumbnail-input>
   <textarea name="content" id="content" placeholder="Contenu de l'article">{{ post.content }}</textarea>
   <input type="submit" value="créer">
 </form>
@@ -24,6 +20,6 @@
 @section('script')
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script src="/js/admin/components/index.js" type="module"></script>
 <script src="/js/admin/create-post.js"></script>
-<script src="/js/admin/file-input.js" type="module"></script>
 @endsection
