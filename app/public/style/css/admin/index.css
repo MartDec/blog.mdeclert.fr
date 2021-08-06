@@ -67,4 +67,14 @@ header * {
   font-weight: 800;
 }
 
+.post-list .post-list-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.post-list .post-list-wrapper .single-post img {
+  width: 100%;
+  height: auto;
+}
+
 /*# sourceMappingURL=index.css.map */

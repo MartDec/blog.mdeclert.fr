@@ -1,0 +1,11 @@
+{{--
+  @var post Post
+--}}
+@set('postUrl', '/admin/posts/' + post.id)
+
+<div class="single-post">
+  <a href="{{ postUrl }}">
+    <img src="{{ post.thumbnail }}" alt="{{ post.title }}">
+  </a>
+  <a href="{{ postUrl }}">{{ post.title }}</a>
+</div>
