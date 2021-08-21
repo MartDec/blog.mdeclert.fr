@@ -9,7 +9,7 @@
   @if (flashMessages.has('errors'))
     <div class="flash flash-error">
       @each ((message, input) in flashMessages.get('errors'))
-        @if (input !== 'not-found')
+        @if (input !== 'not-found' && input !== 'already-exists')
           <p>Le champs {{ input }} est invalide</p>
         @else
           <p>{{ message }}</p>

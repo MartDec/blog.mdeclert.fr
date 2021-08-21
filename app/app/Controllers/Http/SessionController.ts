@@ -6,13 +6,18 @@ import Role from 'App/Models/Role'
 
 export default class SessionController {
   public async register({ auth, session, request, response }: HttpContextContract) {
-    const validated = await request.validate(RegisterUserValidator)
-    const userDetails = { roleId: Role.ROLE_READER, ...validated }
-    const user = await User.createUser(userDetails)
+    if (await User.findBy('email', request.input('email')) === null) {
+      const validated = await request.validate(RegisterUserValidator)
+      const userDetails = { roleId: Role.ROLE_READER, ...validated }
+      const user = await User.createUser(userDetails)
 
-    auth.use('web').login(user)
-    session.put('user', user)
-    response.redirect('/')
+      auth.use('web').login(user)
+      session.put('user', user)
+      return response.redirect('/')
+    }
+
+    session.flash('errors.already-exists', 'Cet email est déjà utilisé')
+    return response.redirect().back()
   }
 
   public async login({ auth, session, request, response }: HttpContextContract) {
