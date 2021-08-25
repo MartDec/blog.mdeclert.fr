@@ -8,10 +8,12 @@ import CreatePostValidator from 'App/Validators/CreatePostValidator'
 export default class PostController {
   public async create({ session, request, response }: HttpContextContract) {
     const validated = await request.validate(CreatePostValidator)
+    const isActive = Object.keys(request.only(['active'])).length > 0
     const thumbnail = request.file('thumbnail')
     const thumbnailPath = await this.uploadFile(thumbnail)
     const postBody = {
       userId: session.get('user').id,
+      active: isActive,
       thumbnail: thumbnailPath,
       title: validated.title,
       content: validated.content
@@ -36,9 +38,29 @@ export default class PostController {
     return view.render(`${domain}::posts`, { posts })
   }
 
-  public async update({ request, response }: HttpContextContract) {
-    const thumbnail = request.file('thumbnail')
-    return response.json({ error: false, thumbnail })
+  public async update({ session, request, response }: HttpContextContract) {
+    const postData = request.all()
+    const post = await Post.find(postData.id)
+    if (post !== null) {
+      let thumbnail
+      if (request.file('thumbnail') !== null)
+        thumbnail = await this.uploadFile(request.file('thumbnail'))
+      const isActive = Object.keys(request.only(['active'])).length > 0
+      const postBody = {
+        id: post.id,
+        userId: session.get('user').id,
+        active: isActive,
+        title: postData.title,
+        content: postData.content,
+        thumbnail: thumbnail !== undefined ? thumbnail : post.thumbnail
+      }
+      post.fill(postBody)
+      await post.save()
+
+      return response.redirect().toRoute('PostController.renderEdit', { id: post.id })
+    }
+
+    return response.redirect().toRoute('PostController.renderEdit', { id: postData.id })
   }
 
   public async renderEdit({ request, view }: HttpContextContract) {

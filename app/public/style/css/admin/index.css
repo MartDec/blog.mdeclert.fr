@@ -67,6 +67,9 @@ header * {
   font-weight: 800;
 }
 
+.post-list {
+  margin-top: 1rem;
+}
 .post-list .post-list-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -75,6 +78,13 @@ header * {
 .post-list .post-list-wrapper .single-post img {
   width: 100%;
   height: auto;
+}
+
+#post-form input[name=title] {
+  display: block;
+}
+#post-form switch-input {
+  display: inline-block;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -3,16 +3,24 @@
 
 @section('style')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<style>
+  switch-input { display: inline-block; }
+</style>
 @endsection
 
 @section('main')
 <h1>Éditer l'article</h1>
-<form action="{{ route('PostController.update', [post.id]) }}" method="POST">
+@each (message in flashMessages.get('errors'))
+  <p>{{ message }}</p>
+@end
+<form id="post-form" action="{{ route('PostController.update', [post.id]) }}" method="POST">
   {{ csrfField() }}
+  <input type="hidden" name="id" value="{{ post.id }}">
   <input type="text" name="title" value="{{ post.title }}" placeholder="title">
+  <switch-input name="active" value="{{ post.active }}" label="Activé"></switch-input>
   <thumbnail-input img="{{ post.thumbnail }}"></thumbnail-input>
   <textarea name="content" id="content" placeholder="Contenu de l'article">{{ post.content }}</textarea>
-  <input type="submit" value="créer">
+  <input type="submit" value="modifier">
 </form>
 <div id="final-content"></div>
 @endsection

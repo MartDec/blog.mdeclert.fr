@@ -10,9 +10,10 @@
   @each (message in flashMessages.get('errors'))
     <p>{{ message }}</p>
   @end
-  <form action="{{ route('PostController.create') }}" method="POST" enctype="multipart/form-data">
+  <form id="post-form" action="{{ route('PostController.create') }}" method="POST" enctype="multipart/form-data">
     {{ csrfField() }}
     <input type="text" name="title" placeholder="title">
+    <switch-input name="active" value="{{ post.active }}" label="Activé"></switch-input>
     <thumbnail-input></thumbnail-input>
     <textarea name="content" id="content" placeholder="Contenu de l'article"></textarea>
     <input type="submit" value="créer">
